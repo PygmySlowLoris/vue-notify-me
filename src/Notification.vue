@@ -15,10 +15,10 @@
 </template>
 <script>
     export default {
-        props:{
+        props: {
             show: false,
-            permanent:false,
-            close:'',
+            permanent: false,
+            close: '',
             content: {},
             containerClass: {
                 type: String,
@@ -34,21 +34,16 @@
             }
 
         },
-        methods:{
+        methods: {
             hideMe(){
-
                 this.$emit('hide');
-                setTimeout(() => {
-                    this.$destroy();
-                },1000)
-
             }
         },
         created(){
-            if(!this.permanent){
+            if (!this.permanent) {
                 setTimeout(() => {
                     this.hideMe();
-                },4000)
+                }, 4000)
             }
 
         }
@@ -63,7 +58,7 @@
         position: relative;
         bottom: 2rem;
         right: 2rem;
-        z-index:9999;
+        z-index: 9999;
         margin-bottom: 1.5rem;
     }
 
