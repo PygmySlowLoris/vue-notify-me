@@ -1,6 +1,6 @@
 <template>
     <div class="notification-container">
-        <notification v-for="item in list" :key="item.id"
+        <notification v-for="item,key in list" :key="item.id"
                       :permanent="item.permanent"
                       :container-class="item.containerClass"
                       :status-class="item.statusClass"
@@ -8,8 +8,13 @@
                       :show="item.show"
                       :close="item.close"
                       :content="item.content"
-                      @hide="item.show = false"
-        ></notification>
+                      @hide="hideChild(key,item)">
+
+            <template slot="content" scope="props">
+                <slot name="content" :data="item.content"></slot>
+            </template>
+
+        </notification>
     </div>
 </template>
 <script>
@@ -65,17 +70,15 @@
                     close: this.close,
                     content: obj.data,
                     containerClass: this.containerClass,
-                    statusClass: this.statusClass,
+                    statusClass: obj.status,
                     width: this.width
                 };
                 this.list.push(item);
             },
-            hideMe(){
-                this.list.map((item) => {
-                   item.show = false;
-
-                   return item;
-                });
+            hideChild(key,item){
+                console.log(key);
+                item.show = false;
+                this.list.splice(key,1);
             },
             // Register eventBus methods.
             registerBusMethods()
