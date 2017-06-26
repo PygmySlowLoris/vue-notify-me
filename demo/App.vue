@@ -182,7 +182,7 @@
             showMe(){
                 this.bus.$emit('notify-me', {
                     permanent:this.permanent,
-                    status: '',
+                    status: this.status,
                     data: {
                         title: 'The pygmy team :)',
                         text: this.text
