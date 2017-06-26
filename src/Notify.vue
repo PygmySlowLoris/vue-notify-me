@@ -1,25 +1,26 @@
 <template>
-    <transition
-            enter-active-class="animated quick fadeInRight"
-            leave-active-class="animated quick fadeOutRight"
-    >
-        <div v-if="showing" :class="[containerClass,statusClass, 'notify-me']" :style="{ width: width + 'px' }">
-            <slot name="content" :data="content"></slot>
-            <button v-if="close === 'bulma'" class="delete" @click="hideMe"></button>
-            <button v-else-if="close === 'bootstrap'" type="button" class="close" aria-label="Close" @click="hideMe">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <i v-else class="notify-close material-icons" @click="hideMe">clear</i>
-        </div>
-    </transition>
+    <div class="notification-container">
+        <notification v-for="item in list" :key="item.id"
+                      :permanent="item.permanent"
+                      :container-class="item.containerClass"
+                      :status-class="item.statusClass"
+                      :width="item.width"
+                      :show="item.show"
+                      :close="item.close"
+                      :content="item.content"
+                      @hide="item.show = false"
+        ></notification>
+    </div>
 </template>
 <script>
+    import Notification from './Notification.vue';
+
     export default {
-        props:{
-            show: {
-                default: false
-            },
-            close:'',
+        components: {
+            notification: Notification
+        },
+        props: {
+            close: '',
             containerClass: {
                 type: String,
                 default: 'alert'
@@ -45,10 +46,9 @@
 
         },
         data(){
-            return{
-                showing: false,
-                permanent:false,
-                content: {}
+            return {
+                list: [],
+                permanent: false,
             }
         },
         watch: {
@@ -56,22 +56,26 @@
                 this.showMe(val);
             }
         },
-        methods:{
+        methods: {
             showMe(obj){
-                this.permanent = obj.permanent || this.permanent;
-                this.content = obj.data;
-                this.showing = true;
-
-                if(!this.permanent)
-                    setTimeout(() => {
-                        this.hideMe()
-                    }, 4000);
+                const item = {
+                    id: this.list.length,
+                    show: true,
+                    permanent: obj.permanent || this.permanent,
+                    close: this.close,
+                    content: obj.data,
+                    containerClass: this.containerClass,
+                    statusClass: this.statusClass,
+                    width: this.width
+                };
+                this.list.push(item);
             },
             hideMe(){
-                this.showing = false;
-                this.permanent = false;
+                this.list.map((item) => {
+                   item.show = false;
 
-                this.$emit('hide');
+                   return item;
+                });
             },
             // Register eventBus methods.
             registerBusMethods()
@@ -89,18 +93,14 @@
     }
 </script>
 <style scoped>
-    .notify-me {
+    .notification-container {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column-reverse;
+        align-items: flex-end;
         position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        z-index:9999;
-    }
-
-    .notify-me i {
-        cursor: pointer;
-        align-self: flex-start;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        height: auto;
     }
 </style>
