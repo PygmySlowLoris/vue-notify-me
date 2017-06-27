@@ -141,10 +141,8 @@
                 container-class="notification"
                 :status-class="status"
                 :width="300"
-                :show="show"
                 close="bulma"
                 :eventBus="bus"
-                @hide="show = false"
         >
             <template slot="content" scope="props">
                 <div style="width: 100%; word-break: break-all; text-align: left">
@@ -178,7 +176,6 @@
                 teamUrl,
                 componentName,
                 repoFullName,
-                show: false,
                 status: 'is-success',
                 permanent: false,
                 text: 'Coded slow but effective',

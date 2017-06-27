@@ -56,11 +56,6 @@
                 permanent: false,
             }
         },
-        watch: {
-            show(val){
-                this.showMe(val);
-            }
-        },
         methods: {
             showMe(obj){
                 const item = {
