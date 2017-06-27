@@ -86,11 +86,13 @@
                                             <div class="control is-expanded">
                                                 <p class="control">
                                                     <label class="radio">
-                                                        <input type="radio" name="question" :value="true" v-model="permanent">
+                                                        <input type="radio" name="question" :value="true"
+                                                               v-model="permanent">
                                                         Yes
                                                     </label>
                                                     <label class="radio">
-                                                        <input type="radio" name="question" :value="false" v-model="permanent">
+                                                        <input type="radio" name="question" :value="false"
+                                                               v-model="permanent">
                                                         No
                                                     </label>
                                                 </p>
@@ -102,6 +104,11 @@
                                     <div class="column">
                                         <button class="button is-primary" style="width: 100%" @click="showMe">
                                             Show Notification
+                                        </button>
+                                    </div>
+                                    <div class="column">
+                                        <button class="button is-warning" style="width: 100%" @click="hideMe">
+                                            Hide Notifications
                                         </button>
                                     </div>
                                 </div>
@@ -172,24 +179,27 @@
                 componentName,
                 repoFullName,
                 show: false,
-                status:'is-success',
-                permanent:false,
-                text:'Coded slow but effective',
+                status: 'is-success',
+                permanent: false,
+                text: 'Coded slow but effective',
                 bus
             }
         },
         methods: {
             showMe(){
                 this.bus.$emit('notify-me', {
-                    permanent:this.permanent,
-                    status: '',
+                    permanent: this.permanent,
+                    status: this.status,
                     data: {
                         title: 'The pygmy team :)',
                         text: this.text
                     }
 
                 });
-                //this.show = true;
+            },
+            hideMe()
+            {
+                this.bus.$emit('hide-notify-me');
             }
         }
     }
