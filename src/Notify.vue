@@ -75,8 +75,10 @@
                 };
                 this.list.push(item);
             },
+            hideMe(){
+                this.list = [];
+            },
             hideChild(key,item){
-                console.log(key);
                 item.show = false;
                 this.list.splice(key,1);
             },
