@@ -137,17 +137,11 @@
                 </div>
             </div>
         </footer>
-        <notify-me
-                container-class="notification"
-                :status-class="status"
-                :width="300"
-                close="bulma"
-                :eventBus="bus"
-        >
-            <template slot="content" scope="props">
+        <notify-me>
+            <template slot="content" scope="{data}">
                 <div style="width: 100%; word-break: break-all; text-align: left">
-                    <h4><b>{{props.data.title}}</b></h4>
-                    <p style="margin: 0">{{props.data.text}}</p>
+                    <h4><b>{{data.title}}</b></h4>
+                    <p style="margin: 0">{{data.text}}</p>
                 </div>
             </template>
         </notify-me>
