@@ -24,6 +24,9 @@
             notification: Notification
         },
         props: {
+            permanent:{
+                default:false
+            },
             close: {
                 default: 'bulma'
             },
@@ -53,8 +56,7 @@
         },
         data(){
             return {
-                list: [],
-                permanent: false,
+                list: []
             }
         },
         methods: {
