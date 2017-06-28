@@ -9,14 +9,16 @@
             <button v-else-if="close === 'bootstrap'" type="button" class="close" aria-label="Close" @click="hideMe">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <i v-else class="notify-close material-icons" @click="hideMe">clear</i>
+            <i v-else :class="close + ' material-icons'" @click="hideMe">clear</i>
         </div>
     </transition>
 </template>
 <script>
     export default {
         props: {
-            permanent: false,
+            permanent: {
+                default: false
+            },
             close: '',
             content: {},
             containerClass: {
