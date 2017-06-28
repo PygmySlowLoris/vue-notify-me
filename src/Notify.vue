@@ -9,7 +9,7 @@
                       :content="item.content"
                       @hide="hideChild(key)">
 
-            <template slot="content" scope="props">
+            <template slot="content">
                 <slot name="content" :data="item.content"></slot>
             </template>
 
@@ -24,10 +24,12 @@
             notification: Notification
         },
         props: {
-            close: '',
+            close: {
+                default: 'bulma'
+            },
             containerClass: {
                 type: String,
-                default: 'alert'
+                default: 'notification'
             },
             statusClass: {
                 type: String,
@@ -60,11 +62,11 @@
                 const item = {
                     id: this.list.length,
                     permanent: obj.permanent || this.permanent,
-                    close: this.close,
+                    close: obj.close || this.close,
                     content: obj.data,
-                    containerClass: this.containerClass,
-                    statusClass: obj.status,
-                    width: this.width
+                    containerClass: obj.containerClass || this.containerClass,
+                    statusClass: obj.status || this.statusClass,
+                    width: obj.width || this.width
                 };
                 this.list.push(item);
             },
@@ -77,14 +79,14 @@
             // Register eventBus methods.
             registerBusMethods()
             {
-                this.eventBus.$on(this.eventShow, this.showMe);
-                this.eventBus.$on(this.eventHide, this.hideMe);
+                const bus = this.eventBus || this.$parent.bus;
+
+                bus.$on(this.eventShow, this.showMe);
+                bus.$on(this.eventHide, this.hideMe);
             }
         },
         created(){
-            // If event bus, register methods.
-            if (this.eventBus)
-                this.registerBusMethods();
+            this.registerBusMethods();
         }
 
     }
