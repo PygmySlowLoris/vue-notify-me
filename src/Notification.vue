@@ -16,7 +16,6 @@
 <script>
     export default {
         props: {
-            show: false,
             permanent: false,
             close: '',
             content: {},
@@ -33,6 +32,11 @@
                 default: 350
             }
 
+        },
+        data(){
+            return {
+                show:true
+            }
         },
         methods: {
             hideMe(){

@@ -5,10 +5,9 @@
                       :container-class="item.containerClass"
                       :status-class="item.statusClass"
                       :width="item.width"
-                      :show="item.show"
                       :close="item.close"
                       :content="item.content"
-                      @hide="hideChild(key,item)">
+                      @hide="hideChild(key)">
 
             <template slot="content" scope="props">
                 <slot name="content" :data="item.content"></slot>
@@ -60,7 +59,6 @@
             showMe(obj){
                 const item = {
                     id: this.list.length,
-                    show: true,
                     permanent: obj.permanent || this.permanent,
                     close: this.close,
                     content: obj.data,
@@ -73,8 +71,7 @@
             hideMe(){
                 this.list = [];
             },
-            hideChild(key,item){
-                item.show = false;
+            hideChild(key){
                 this.list.splice(key,1);
             },
             // Register eventBus methods.
