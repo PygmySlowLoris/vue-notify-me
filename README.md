@@ -1,0 +1,109 @@
+#   vue-notify-me
+
+<p align="center">
+<img src="https://media.giphy.com/media/neHUu8DKlgdVK/giphy.gif" />
+</p>
+
+Notification Alert for Vue.
+
+** Features **
+
+* Customizable template
+* Stackable notifications
+
+<a href="https://pygmyslowloris.github.io/vue-notify-me/"> Live Demo</a>
+
+##  Installation
+
+```
+npm install vue-notify-me --save
+```
+
+##  Properties
+
+| Properties                    | Type      | Values     |
+| :---------------              | :-------  | :--------- |
+|  `event-bus`  (not required)  | Object    | <b>Default Parent instance</b> <br>Central event Bus  |
+|  `event-show` (not required)  | String    | <b>Default 'notify-me'|
+|  `event-hide` (not required)  | String    | <b>Default 'hide-notify-me'|
+|  `close` (not required)       | String    | <b>Default 'bulma', options: bootstrap or any other class for the closing icon|
+|  `permanent` (not required)   | Bool      | <b>Default false|
+|  `container` (not required)   | String    | <b>Default 'notification', (Class for the notification container)|
+|  `status` (not required)      | String    | <b>Default 'alert-success', (Class for the notification status)|
+|  `width` (not required)       | String    | <b>Default '350'    |
+
+##  Examples
+
+Include the component in your .vue file.
+
+```
+<template>
+  <notify-me>
+      <template slot="content" scope="{data}">
+          <div style="width: 100%; word-break: break-all; text-align: left">
+              <h4><b>{{data.title}}</b></h4>
+              <p style="margin: 0">{{data.text}}</p>
+          </div>
+      </template>
+  </notify-me>
+</template>
+```
+
+You may set no mandatory properties for the component like this:
+
+```
+<notify-me
+    container="notification"
+    status="alert-success"
+    :width="300"
+    close="bulma"
+    :eventBus="bus"
+>
+      <template slot="content" scope="{data}">
+          <div style="width: 100%; word-break: break-all; text-align: left">
+              <h4><b>{{data.title}}</b></h4>
+              <p style="margin: 0">{{data.text}}</p>
+          </div>
+      </template>
+  </notify-me>
+```
+
+To show a notification just fire an event like this:
+ 
+```
+<script>
+import Notify from 'vue-notify-me'
+
+export default {
+  components: {
+    'notify-me': Notify
+  },
+  mounted(){
+      this.bus.$emit('notify-me', {
+        data: {
+            title: 'The pygmy team :)',
+            text: 'this is my notification'
+        }
+  
+      });
+  }
+  
+}
+</script>
+```
+
+You can also pass any available prop through the event emitter:
+
+```
+this.bus.$emit('notify-me', {
+    permanent: true,
+    status: this.status,
+    data: {
+        title: 'The pygmy team :)',
+        text: this.text
+    }
+
+});
+```
+
+Enjoy :)
