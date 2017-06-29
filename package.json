@@ -1,7 +1,7 @@
 {
   "name": "vue-notify-me",
   "version": "1.0.0",
-  "description": "Vue Alert component. Notify user when something happens",
+  "description": "Stackable notification Alert for Vue",
   "main": "src/index.js",
   "repository": {
     "type": "git",
