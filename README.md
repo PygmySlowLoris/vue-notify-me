@@ -1,7 +1,7 @@
 #   vue-notify-me
 
 <p align="center">
-<img src="https://media.giphy.com/media/neHUu8DKlgdVK/giphy.gif" />
+<img src="https://media.giphy.com/media/GoTlxRAapcEVy/giphy.gif" />
 </p>
 
 Notification Alert for Vue.
