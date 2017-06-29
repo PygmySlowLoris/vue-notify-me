@@ -6,7 +6,7 @@
 
 Notification Alert for Vue.
 
-** Features **
+## Features
 
 * Customizable template
 * Stackable notifications
@@ -49,7 +49,9 @@ Include the component in your .vue file.
 </template>
 ```
 
-You may set no mandatory properties for the component like this:
+If you'd like to use the component in a SPA set a single template on your layout application
+and fire your notification through your central event bus.
+Set any available prop for the component like this:
 
 ```
 <notify-me
@@ -57,7 +59,7 @@ You may set no mandatory properties for the component like this:
     status="alert-success"
     :width="300"
     close="bulma"
-    :eventBus="bus"
+    :eventBus="myCentralBus"
 >
       <template slot="content" scope="{data}">
           <div style="width: 100%; word-break: break-all; text-align: left">
@@ -92,7 +94,7 @@ export default {
 </script>
 ```
 
-You can also pass any available prop through the event emitter:
+You may also add any available prop through the event emitter:
 
 ```
 this.bus.$emit('notify-me', {
