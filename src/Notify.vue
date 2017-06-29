@@ -2,8 +2,8 @@
     <div class="notification-container">
         <notification v-for="item,key in list" :key="item.id"
                       :permanent="item.permanent"
-                      :container-class="item.containerClass"
-                      :status-class="item.statusClass"
+                      :container="item.container"
+                      :status="item.status"
                       :width="item.width"
                       :close="item.close"
                       :content="item.content"
@@ -30,11 +30,11 @@
             close: {
                 default: 'bulma'
             },
-            containerClass: {
+            container: {
                 type: String,
                 default: 'notification'
             },
-            statusClass: {
+            status: {
                 type: String,
                 default: 'alert-success'
             },
@@ -66,8 +66,8 @@
                     permanent: obj.permanent || this.permanent,
                     close: obj.close || this.close,
                     content: obj.data,
-                    containerClass: obj.containerClass || this.containerClass,
-                    statusClass: obj.status || this.statusClass,
+                    container: obj.container || this.container,
+                    status: obj.status || this.status,
                     width: obj.width || this.width
                 };
                 this.list.push(item);

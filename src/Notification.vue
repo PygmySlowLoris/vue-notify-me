@@ -3,7 +3,7 @@
             enter-active-class="animated quick fadeInRight"
             leave-active-class="animated quick fadeOutRight"
     >
-        <div v-if="show" :class="[containerClass,statusClass, 'notify-me']" :style="{ width: width + 'px' }">
+        <div v-if="show" :class="[container,status, 'notify-me']" :style="{ width: width + 'px' }">
             <slot name="content"></slot>
             <button v-if="close === 'bulma'" class="delete" @click="hideMe"></button>
             <button v-else-if="close === 'bootstrap'" type="button" class="close" aria-label="Close" @click="hideMe">
@@ -21,11 +21,11 @@
             },
             close: '',
             content: {},
-            containerClass: {
+            container: {
                 type: String,
                 default: 'alert'
             },
-            statusClass: {
+            status: {
                 type: String,
                 default: 'alert-success'
             },
