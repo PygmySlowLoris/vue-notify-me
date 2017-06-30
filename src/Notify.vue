@@ -81,10 +81,13 @@
             // Register eventBus methods.
             registerBusMethods()
             {
-                const bus = this.eventBus || this.$parent.bus;
+                const bus = this.eventBus || (this.$parent) ? this.$parent.bus || this.$parent : null;
 
-                bus.$on(this.eventShow, this.showMe);
-                bus.$on(this.eventHide, this.hideMe);
+                if(bus){
+                    bus.$on(this.eventShow, this.showMe);
+                    bus.$on(this.eventHide, this.hideMe);
+                }
+
             }
         },
         created(){
