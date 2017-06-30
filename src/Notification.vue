@@ -64,7 +64,7 @@
         position: relative;
         bottom: 2rem;
         right: 2rem;
-        z-index: 9999;
+        z-index: 99999;
         margin-bottom: 1.5rem;
     }
 
