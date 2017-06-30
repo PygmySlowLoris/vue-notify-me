@@ -137,7 +137,8 @@
                 </div>
             </div>
         </footer>
-        <notify-me>
+        <notify-me
+            :event-bus="bus">
             <template slot="content" scope="{data}">
                 <div style="width: 100%; word-break: break-all; text-align: left">
                     <h4><b>{{data.title}}</b></h4>
