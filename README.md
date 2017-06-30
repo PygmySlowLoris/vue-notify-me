@@ -38,7 +38,8 @@ Include the component in your .vue file.
 
 ```
 <template>
-  <notify-me>
+  <notify-me
+        :event-bus="bus">
       <template slot="content" scope="{data}">
           <div style="width: 100%; word-break: break-all; text-align: left">
               <h4><b>{{data.title}}</b></h4>
@@ -59,7 +60,7 @@ Set any available prop for the component like this:
     status="alert-success"
     :width="300"
     close="bulma"
-    :eventBus="myCentralBus"
+    :event-bus="bus"
 >
       <template slot="content" scope="{data}">
           <div style="width: 100%; word-break: break-all; text-align: left">
@@ -76,9 +77,16 @@ To show a notification just fire an event like this:
 <script>
 import Notify from 'vue-notify-me'
 
+const bus = new Vue();
+
 export default {
   components: {
     'notify-me': Notify
+  },
+  data(){
+      return {
+          bus
+      }
   },
   mounted(){
       this.bus.$emit('notify-me', {
