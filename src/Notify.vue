@@ -106,5 +106,6 @@
         bottom: 0;
         width: auto;
         height: auto;
+        z-index: 9999;
     }
 </style>
