@@ -81,7 +81,7 @@
             // Register eventBus methods.
             registerBusMethods()
             {
-                const bus = this.eventBus || (this.$parent) ? this.$parent.bus || this.$parent : null;
+                const bus = this.eventBus || ((this.$parent) ? this.$parent.bus || this.$parent : null);
 
                 if(bus){
                     bus.$on(this.eventShow, this.showMe);
@@ -106,5 +106,6 @@
         bottom: 0;
         width: auto;
         height: auto;
+        z-index: 9999;
     }
 </style>
