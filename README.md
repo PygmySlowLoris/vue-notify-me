@@ -23,14 +23,14 @@ npm install vue-notify-me --save
 
 | Properties                    | Type      | Values     |
 | :---------------              | :-------  | :--------- |
-|  `event-bus`  (not required)  | Object    | <b>Default Parent instance</b> <br>Central event Bus  |
-|  `event-show` (not required)  | String    | <b>Default 'notify-me'|
-|  `event-hide` (not required)  | String    | <b>Default 'hide-notify-me'|
-|  `close` (not required)       | String    | <b>Default 'bulma', options: bootstrap or any other class for the closing icon|
-|  `permanent` (not required)   | Bool      | <b>Default false|
-|  `container` (not required)   | String    | <b>Default 'notification', (Class for the notification container)|
-|  `status` (not required)      | String    | <b>Default 'alert-success', (Class for the notification status)|
-|  `width` (not required)       | String    | <b>Default '350'    |
+|  `event-bus`                  | Object    | <b>Central event Bus </b>|
+|  `event-show` (not required)  | String    | <b>Default </b> 'notify-me'|
+|  `event-hide` (not required)  | String    | <b>Default </b> 'hide-notify-me'|
+|  `close` (not required)       | String    | <b>Default </b>'bulma', options: bootstrap or any other class for the closing icon|
+|  `permanent` (not required)   | Bool      | <b>Default </b>false|
+|  `container` (not required)   | String    | <b>Default </b>'notification', (Class for the notification container)|
+|  `status` (not required)      | String    | <b>Default </b>'alert-success', (Class for the notification status)|
+|  `width` (not required)       | String    | <b>Default </b>'350'    |
 
 ##  Examples
 
