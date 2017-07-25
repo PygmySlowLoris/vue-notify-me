@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!--Example dependecies-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <a :href="repoUrl" class="github-corner" aria-label="View source on Github">
             <svg width="80" height="80" viewBox="0 0 250 250"
