@@ -29,7 +29,7 @@ npm install vue-notify-me --save
 |  `close` (not required)       | String    | <b>Default </b>'bulma', options: bootstrap or any other class for the closing icon|
 |  `permanent` (not required)   | Bool      | <b>Default </b>false|
 |  `container` (not required)   | String    | <b>Default </b>'notification', (Class for the notification container)|
-|  `status` (not required)      | String    | <b>Default </b>'alert-success', (Class for the notification status)|
+|  `status` (not required)      | String    | <b>Default </b>'is-success', (Class for the notification status)|
 |  `width` (not required)       | String    | <b>Default </b>'350'    |
 
 ##  Examples

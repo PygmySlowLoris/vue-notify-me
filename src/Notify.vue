@@ -36,7 +36,7 @@
             },
             status: {
                 type: String,
-                default: 'alert-success'
+                default: 'is-success'
             },
             width: {
                 type: Number,
