@@ -15,7 +15,7 @@ Notification Alert for Vue.
 
 ##  Installation
 
-```
+```bash
 npm install vue-notify-me --save
 ```
 
@@ -36,7 +36,7 @@ npm install vue-notify-me --save
 
 Include the component in your .vue file.
 
-```
+```html
 <template>
   <notify-me
         :event-bus="bus">
@@ -54,7 +54,7 @@ If you'd like to use the component in a SPA set a single template on your layout
 and fire your notification through your central event bus.
 Set any available prop for the component like this:
 
-```
+```html
 <notify-me
     container="notification"
     status="alert-success"
@@ -73,7 +73,7 @@ Set any available prop for the component like this:
 
 To show a notification just fire an event like this:
  
-```
+```js
 <script>
 import Notify from 'vue-notify-me'
 
@@ -104,7 +104,7 @@ export default {
 
 You may also add any available prop through the event emitter:
 
-```
+```js
 this.bus.$emit('notify-me', {
     permanent: true,
     status: this.status,
