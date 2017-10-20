@@ -31,7 +31,7 @@ npm install vue-notify-me --save
 |  `container` (not required)   | String    | <b>Default </b>`notification`, (Class for the notification container)|
 |  `status` (not required)      | String    | <b>Default </b>`is-success`, (Class for the notification status)|
 |  `width` (not required)       | String    | <b>Default </b>`350px`. It's **mandatory** to set the **unit** for the width. For example: `rem`, `em`, `px`    |
-|  `timeout` (not required)       | Number    | <b>Default `4000`</b>. If notification is not `permanent` you can set the timeout for it    |
+|  `timeout` (not required)       | Number    | <b>Default `4000`</b>. Value is in miliseconds. If notification is not `permanent` you can set the timeout for it    |
 
 ##  Examples
 
