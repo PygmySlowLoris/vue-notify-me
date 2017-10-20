@@ -24,13 +24,14 @@ npm install vue-notify-me --save
 | Properties                    | Type      | Values     |
 | :---------------              | :-------  | :--------- |
 |  `event-bus`                  | Object    | <b>Central event Bus </b>|
-|  `event-show` (not required)  | String    | <b>Default </b> 'notify-me'|
-|  `event-hide` (not required)  | String    | <b>Default </b> 'hide-notify-me'|
-|  `close` (not required)       | String    | <b>Default </b>'bulma', options: bootstrap or any other class for the closing icon|
+|  `event-show` (not required)  | String    | <b>Default </b> `notify-me`|
+|  `event-hide` (not required)  | String    | <b>Default </b> `hide-notify-me`|
+|  `close` (not required)       | String    | <b>Default </b>`bulma`, options: bootstrap or any other class for the closing icon|
 |  `permanent` (not required)   | Bool      | <b>Default </b>false|
-|  `container` (not required)   | String    | <b>Default </b>'notification', (Class for the notification container)|
-|  `status` (not required)      | String    | <b>Default </b>'is-success', (Class for the notification status)|
-|  `width` (not required)       | String    | <b>Default </b>'350'    |
+|  `container` (not required)   | String    | <b>Default </b>`notification`, (Class for the notification container)|
+|  `status` (not required)      | String    | <b>Default </b>`is-success`, (Class for the notification status)|
+|  `width` (not required)       | String    | <b>Default </b>`350px`. It's **mandatory** to set the **unit** for the width. For example: `rem`, `em`, `px`    |
+|  `timeout` (not required)       | Number    | <b>Default `4000`</b>. If notification is not `permanent` you can set the timeout for it    |
 
 ##  Examples
 

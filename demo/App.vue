@@ -99,6 +99,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">Timeout</label>
+                                            <div class="control">
+                                                <input v-model="timeout" class="input" type="number">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="columns">
                                     <div class="column">
@@ -139,7 +147,7 @@
         </footer>
         <notify-me
             :event-bus="bus">
-            <template slot="content" scope="{data}">
+            <template slot="content" slot-scope="{data}">
                 <div style="width: 100%; word-break: break-all; text-align: left">
                     <h4><b>{{data.title}}</b></h4>
                     <p style="margin: 0">{{data.text}}</p>
@@ -174,6 +182,7 @@
                 status: 'is-success',
                 permanent: false,
                 text: 'Coded slow but effective',
+                timeout: 4000,
                 bus
             }
         },
@@ -182,6 +191,7 @@
                 this.bus.$emit('notify-me', {
                     permanent: this.permanent,
                     status: this.status,
+                    timeout: parseInt(this.timeout),
                     data: {
                         title: 'The pygmy team :)',
                         text: this.text

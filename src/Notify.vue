@@ -5,6 +5,7 @@
                       :container="item.container"
                       :status="item.status"
                       :width="item.width"
+                      :timeout="item.timeout"
                       :close="item.close"
                       :content="item.content"
                       @hide="hideChild(key)">
@@ -39,8 +40,12 @@
                 default: 'is-success'
             },
             width: {
+                type: String,
+                default: '350px'
+            },
+            timeout: {
                 type: Number,
-                default: 350
+                default: 4000
             },
             // central event bus
             eventBus: {
@@ -68,7 +73,8 @@
                     content: obj.data,
                     container: obj.container || this.container,
                     status: obj.status || this.status,
-                    width: obj.width || this.width
+                    width: obj.width || this.width,
+                    timeout: obj.timeout || this.timeout
                 };
                 this.list.push(item);
             },

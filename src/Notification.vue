@@ -3,7 +3,7 @@
             enter-active-class="animated quick fadeInRight"
             leave-active-class="animated quick fadeOutRight"
     >
-        <div v-if="show" :class="[container,status, 'notify-me']" :style="{ width: width + 'px' }">
+        <div v-if="show" :class="[container,status, 'notify-me']" :style="{ width: width }">
             <slot name="content"></slot>
             <button v-if="close === 'bulma'" class="delete" @click="hideMe"></button>
             <button v-else-if="close === 'bootstrap'" type="button" class="close" aria-label="Close" @click="hideMe">
@@ -30,8 +30,12 @@
                 default: 'alert-success'
             },
             width: {
+                type: String,
+                default: '350px'
+            },
+            timeout: {
                 type: Number,
-                default: 350
+                default: 4000
             }
 
         },
@@ -49,7 +53,7 @@
             if (!this.permanent) {
                 setTimeout(() => {
                     this.hideMe();
-                }, 4000)
+                }, this.timeout)
             }
 
         }
