@@ -39,15 +39,16 @@ Include the component in your .vue file.
 
 ```html
 <template>
-  <notify-me
-        :event-bus="bus">
-      <template slot="content" scope="{data}">
-          <div style="width: 100%; word-break: break-all; text-align: left">
-              <h4><b>{{data.title}}</b></h4>
-              <p style="margin: 0">{{data.text}}</p>
-          </div>
-      </template>
-  </notify-me>
+    <notify-me :event-bus="bus">
+        <template slot="content" scope="{data}">
+            <div style="width: 100%; word-break: break-all; text-align: left">
+                <h4>
+                    <b>{{ data.title }}</b>
+                </h4>
+                <p style="margin: 0">{{ data.text }}</p>
+            </div>
+        </template>
+    </notify-me>
 </template>
 ```
 
@@ -63,20 +64,22 @@ Set any available prop for the component like this:
     close="bulma"
     :event-bus="bus"
 >
-      <template slot="content" scope="{data}">
-          <div style="width: 100%; word-break: break-all; text-align: left">
-              <h4><b>{{data.title}}</b></h4>
-              <p style="margin: 0">{{data.text}}</p>
-          </div>
-      </template>
-  </notify-me>
+    <template slot="content" scope="{data}">
+        <div style="width: 100%; word-break: break-all; text-align: left">
+            <h4>
+                <b>{{ data.title }}</b>
+            </h4>
+            <p style="margin: 0">{{ data.text }}</p>
+        </div>
+    </template>
+</notify-me>
 ```
 
 To show a notification just fire an event like this:
- 
+
 ```js
 <script>
-import Notify from 'vue-notify-me'
+import Notify from 'vue-notify-me';
 
 const bus = new Vue();
 
@@ -84,22 +87,20 @@ export default {
   components: {
     'notify-me': Notify
   },
-  data(){
-      return {
-          bus
-      }
+  data() {
+    return {
+      bus
+    };
   },
-  mounted(){
-      this.bus.$emit('notify-me', {
-        data: {
-            title: 'The pygmy team :)',
-            text: 'this is my notification'
-        }
-  
-      });
+  mounted() {
+    this.bus.$emit('notify-me', {
+      data: {
+        title: 'The pygmy team :)',
+        text: 'this is my notification'
+      }
+    });
   }
-  
-}
+};
 </script>
 ```
 
@@ -107,13 +108,12 @@ You may also add any available prop through the event emitter:
 
 ```js
 this.bus.$emit('notify-me', {
-    permanent: true,
-    status: this.status,
-    data: {
-        title: 'The pygmy team :)',
-        text: this.text
-    }
-
+  permanent: true,
+  status: this.status,
+  data: {
+    title: 'The pygmy team :)',
+    text: this.text
+  }
 });
 ```
 

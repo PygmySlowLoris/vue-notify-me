@@ -1,22 +1,24 @@
 <template>
     <div class="notification-container">
-        <notification v-for="item,key in list" :key="item.id"
-                      :permanent="item.permanent"
-                      :container="item.container"
-                      :status="item.status"
-                      :width="item.width"
-                      :timeout="item.timeout"
-                      :close="item.close"
-                      :content="item.content"
-                      @hide="hideChild(key)">
-
+        <notification
+            v-for="(item,key) in list"
+            :key="item.id"
+            :permanent="item.permanent"
+            :container="item.container"
+            :status="item.status"
+            :width="item.width"
+            :timeout="item.timeout"
+            :close="item.close"
+            :content="item.content"
+            @hide="hideChild(key)"
+        >
             <template slot="content">
-                <slot name="content" :data="item.content"></slot>
+                <slot name="content" :data="item.content" />
             </template>
-
         </notification>
     </div>
 </template>
+
 <script>
     import Notification from './Notification.vue';
 
@@ -25,8 +27,8 @@
             notification: Notification
         },
         props: {
-            permanent:{
-                default:false
+            permanent: {
+                default: false
             },
             close: {
                 default: 'bulma'
@@ -56,16 +58,15 @@
             },
             eventHide: {
                 default: 'hide-notify-me'
-            },
-
-        },
-        data(){
-            return {
-                list: []
             }
         },
+        data() {
+            return {
+                list: []
+            };
+        },
         methods: {
-            showMe(obj){
+            showMe(obj) {
                 const item = {
                     id: this.list.length,
                     permanent: obj.permanent || this.permanent,
@@ -78,30 +79,32 @@
                 };
                 this.list.push(item);
             },
-            hideMe(){
+            hideMe() {
                 this.list = [];
             },
-            hideChild(key){
-                this.list.splice(key,1);
+            hideChild(key) {
+                this.list.splice(key, 1);
             },
             // Register eventBus methods.
-            registerBusMethods()
-            {
-                const bus = this.eventBus || ((this.$parent) ? this.$parent.bus || this.$parent : null);
+            registerBusMethods() {
+                const bus =
+                    this.eventBus ||
+                    (this.$parent
+                        ? this.$parent.bus || this.$parent
+                        : null);
 
-                if(bus){
+                if (bus) {
                     bus.$on(this.eventShow, this.showMe);
                     bus.$on(this.eventHide, this.hideMe);
                 }
-
             }
         },
-        created(){
+        created() {
             this.registerBusMethods();
         }
-
-    }
+    };
 </script>
+
 <style scoped>
     .notification-container {
         display: flex;
