@@ -1,18 +1,35 @@
 <template>
     <transition
-            enter-active-class="animated quick fadeInRight"
-            leave-active-class="animated quick fadeOutRight"
+        enter-active-class="animated quick fadeInRight"
+        leave-active-class="animated quick fadeOutRight"
     >
-        <div v-if="show" :class="[container,status, 'notify-me']" :style="{ width: width }">
-            <slot name="content"></slot>
-            <button v-if="close === 'bulma'" class="delete" @click="hideMe"></button>
-            <button v-else-if="close === 'bootstrap'" type="button" class="close" aria-label="Close" @click="hideMe">
+        <div
+            v-if="show"
+            :class="[container, status, 'notify-me']"
+            :style="{ width: width }"
+        >
+            <slot name="content" />
+            <button
+                v-if="close === 'bulma'"
+                class="delete"
+                @click="hideMe"
+            />
+            <button
+                v-else-if="close === 'bootstrap'"
+                type="button"
+                class="close"
+                aria-label="Close"
+                @click="hideMe"
+            >
                 <span aria-hidden="true">&times;</span>
             </button>
-            <i v-else :class="close + ' material-icons'" @click="hideMe">clear</i>
+            <i v-else :class="`${close} material-icons`" @click="hideMe">
+                clear
+            </i>
         </div>
     </transition>
 </template>
+
 <script>
     export default {
         props: {
@@ -37,29 +54,27 @@
                 type: Number,
                 default: 4000
             }
-
         },
-        data(){
+        data() {
             return {
-                show:true
-            }
+                show: true
+            };
         },
         methods: {
-            hideMe(){
+            hideMe() {
                 this.$emit('hide');
             }
         },
-        created(){
+        created() {
             if (!this.permanent) {
                 setTimeout(() => {
                     this.hideMe();
-                }, this.timeout)
+                }, this.timeout);
             }
-
         }
-
     }
 </script>
+
 <style scoped>
     .notify-me {
         display: flex;
